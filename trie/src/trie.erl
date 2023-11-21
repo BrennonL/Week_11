@@ -68,6 +68,7 @@ add_test_()->
   Trie0 = #{},
   Trie1 = #{'D' => #{'a' => #{'n' => #{'i' => #{nil => nil}}}}},
   Trie2 = maps:put('S', #{'a' => #{'l' => #{'l' => #{'y' => #{nil => nil}}}}}, Trie1),
+  Trie3 = #{'H' => #{'a' => #{'t' => #{nil => nil}}}},
 	[?_assertEqual(
     #{'D' => #{'a' => #{'n' => #{'i' => #{'e' => #{'l' => #{'l' => #{'e' => #{nil => nil}}}}}}}}},
     add(['D', 'a', 'n', 'i', 'e', 'l', 'l', 'e'], Trie0)
@@ -81,7 +82,8 @@ add_test_()->
     add(['D', 'a', 'n', 'i', 'e', 'l', 'l', 'e'], Trie2)
   ),%happy path
 	 %nasty thoughts start here
-   ?_assertEqual(fail, add(not_valid, Trie1))
+   ?_assertEqual(fail, add(not_valid, Trie1)),
+   ?_assertEqual(Trie3, add(['H', 'a', 't'], Trie3))
     
 	].
 
